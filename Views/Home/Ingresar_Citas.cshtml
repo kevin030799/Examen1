@@ -1,0 +1,53 @@
+﻿@model Citas
+@{
+    ViewData["Title"] = "Crear Cita";
+}
+
+<h2>Crear Cita</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="CrearCita" method="post">
+    <div class="form-group">
+        <label>ID de Cita</label>
+        <input asp-for="Id_Cita" class="form-control" placeholder="ID de la Cita" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>ID del Paciente</label>
+        <input asp-for="Id_Paciente" class="form-control" placeholder="ID del Paciente" required />
+    </div>
+
+    <div class="form-group">
+        <label>Fecha y Hora de la Cita</label>
+        <input asp-for="FechaHora" type="datetime-local" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Motivo de la Consulta</label>
+        <textarea asp-for="Motivo" class="form-control" placeholder="Describa el motivo de la consulta" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Estado de la Cita</label>
+        <select asp-for="Estado" class="form-control" required>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Confirmada">Confirmada</option>
+            <option value="Cancelada">Cancelada</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cita</button>
+</form>
+

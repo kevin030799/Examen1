@@ -1,0 +1,39 @@
+﻿
+@model AccesoDatos
+@{
+    ViewData["Title"] = "Registrar Paciente o Agendar Cita";
+}
+
+<h2>Registrar Paciente o Agendar Cita</h2>
+
+<h3>Buscar Paciente por Cédula</h3>
+<form method="post">
+    <label for="cedula">Ingrese cédula:</label>
+    <input type="text" id="cedula" name="Cedula" placeholder="Cédula del paciente" required />
+    <button type="submit" asp-page-handler="Buscar" class="btn btn-primary">Buscar</button>
+</form>
+
+<h3>Citas del Día</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID Cita</th>
+            <th>ID Paciente</th>
+            <th>Fecha y Hora</th>
+            <th>Motivo</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cita in Model.ObtenerCitasDelDia)
+        {
+            <tr>
+                <td>@cita.Id_Cita</td>
+                <td>@cita.Id_Paciente</td>
+                <td>@cita.FechaHora.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@cita.Motivo</td>
+                <td>@cita.Estado</td>
+            </tr>
+        }
+    </tbody>
+</table>
