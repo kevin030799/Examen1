@@ -56,7 +56,31 @@ namespace Examen1.Models
                 }
             }
 
-            public void InsertarCita(Citas cita)
+        public void ModificarPaciente(Pacientes paciente)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_conexion))
+                {
+                    SqlCommand cmd = new SqlCommand("sp_ModificarPaciente", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Cedula", paciente.Cedula);
+                    cmd.Parameters.AddWithValue("@Telefono", paciente.Telefono);
+                    cmd.Parameters.AddWithValue("@CorreoElectronico", paciente.Correo);
+                    cmd.Parameters.AddWithValue("@Direccion", paciente.Direccion);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+              
+        
+        public void InsertarCita(Citas cita)
             {
                 using (SqlConnection con = new SqlConnection(_conexion))
                 {

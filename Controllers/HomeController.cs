@@ -30,7 +30,7 @@ public class HomeController : Controller
         {
             return RedirectToAction("RegistrarPaciente");
         }
-        return View("FormularioCita", paciente);
+        return View("Pacientes", paciente);
     }
 
     [HttpPost]
@@ -54,6 +54,20 @@ public class HomeController : Controller
             return RedirectToAction("Index");
         }
     }
+
+    public ActionResult EliminarPaciente(string cedula)
+    {
+        var paciente = _accesoDatos.ObtenerPacientePorCedula(cedula);
+        if (paciente == null)
+        {
+            return RedirectToAction("Pacientes");
+        }
+
+        _accesoDatos.EliminarPacientePorCedula(cedula);
+
+        return RedirectToAction("Pacientes");
+    }
+
 
     [HttpPost]
     public ActionResult AgendarCita(Citas cita)

@@ -1,6 +1,4 @@
-﻿
-@model AccesoDatos
-@{
+﻿@{
     ViewData["Title"] = "Registrar Paciente o Agendar Cita";
 }
 
@@ -13,8 +11,11 @@
     <button type="submit" asp-page-handler="Buscar" class="btn btn-primary">Buscar</button>
 </form>
 
-<h3>Citas del Día</h3>
-<table class="table">
+<h2>Citas del Día</h2>
+
+<a href="/Main/CrearCita" class="btn btn-primary">Agregar Cita</a>
+
+<table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>ID Cita</th>
@@ -22,17 +23,22 @@
             <th>Fecha y Hora</th>
             <th>Motivo</th>
             <th>Estado</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var cita in Model.ObtenerCitasDelDia)
+        @foreach (Citas citas in this.Model)
         {
             <tr>
-                <td>@cita.Id_Cita</td>
-                <td>@cita.Id_Paciente</td>
-                <td>@cita.FechaHora.ToString("yyyy-MM-dd HH:mm")</td>
-                <td>@cita.Motivo</td>
-                <td>@cita.Estado</td>
+                <td>@citas.Id_Cita</td>
+                <td>@citas.Id_Paciente</td>
+                <td>@citas.FechaHora.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@citas.Motivo</td>
+                <td>@citas.Estado</td>
+                <td>
+                    <a href="/Main/ModificarCita?id=@citas.Id_Cita" class="btn btn-primary">Modificar</a>
+                    <a href="/Main/EliminarCita?id=@citas.Id_Cita" class="btn btn-danger">Eliminar</a>
+                </td>
             </tr>
         }
     </tbody>
