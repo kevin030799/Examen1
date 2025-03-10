@@ -37,8 +37,8 @@
                 <td>@paciente.Direccion</td>
                 <td>@paciente.FechaNacimiento.ToString("dd/MM/yyyy")</td>
                 <td>
-                    <a href="/Main/AgregarPaciente?id=@paciente.Id_Paciente" class="btn btn-primary">Modificar</a>
-                    <a href="/Main/EliminarPaciente?id=@paciente.Id_Paciente" class="btn btn-primary">Eliminar</a>
+                    <a href="/Home/Insertar_Paciente?id=@paciente.Id_Paciente" class="btn btn-primary">Modificar</a>
+                    <a href="/Home/Eliminar_Paciente?id=@paciente.Id_Paciente" class="btn btn-primary">Eliminar</a>
                 </td>
             </tr>
         }

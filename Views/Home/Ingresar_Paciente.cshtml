@@ -25,7 +25,7 @@
 
 <h2>Ingresar Paciente</h2>
 
-<form action="/Main/GuardarPaciente" method="post">
+<form action="/Home/Ingresar_Paciente" method="post">
     @Html.TextBoxFor(_ => _.Id_Paciente, new { @class = "form-control", @type = "hidden" })
 
     <div class="mb-3">
@@ -59,6 +59,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar Paciente</button>
-    <a href="/Main/" class="btn btn-info">Cancelar</a>
+    <a href="/Home/Pacientes" class="btn btn-info">Cancelar</a>
 </form>
 
