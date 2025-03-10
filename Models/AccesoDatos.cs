@@ -94,5 +94,16 @@ namespace Examen1.Models
                 }
                 return citas;
             }
+        public void EliminarPacientePorCedula(string cedula)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                SqlCommand cmd = new SqlCommand("EliminarPacientePorCedula", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Cedula", cedula);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
+    }
     }

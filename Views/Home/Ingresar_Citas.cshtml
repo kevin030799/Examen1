@@ -18,25 +18,24 @@ else if (TempData["ErrorMessage"] != null)
     </div>
 }
 
-<form asp-action="CrearCita" method="post">
-    <div class="form-group">
-        <label>ID de Cita</label>
-        <input asp-for="Id_Cita" class="form-control" placeholder="ID de la Cita" readonly />
+<h2>Crear Cita</h2>
+
+<form action="/Main/CrearCita" method="post">
+    @Html.TextBoxFor(_ => _.Id_Cita, new { @class = "form-control", @type = "hidden" })
+
+    <div class="mb-3">
+        <div class="form-label">ID del Paciente</div>
+        @Html.TextBoxFor(_ => _.Id_Paciente, new { @class = "form-control", @placeholder = "ID del Paciente", @required = "required" })
     </div>
 
-    <div class="form-group">
-        <label>ID del Paciente</label>
-        <input asp-for="Id_Paciente" class="form-control" placeholder="ID del Paciente" required />
+    <div class="mb-3">
+        <div class="form-label">Fecha y Hora de la Cita</div>
+        @Html.TextBoxFor(_ => _.FechaHora, new { @class = "form-control", @type = "datetime-local", @required = "required" })
     </div>
 
-    <div class="form-group">
-        <label>Fecha y Hora de la Cita</label>
-        <input asp-for="FechaHora" type="datetime-local" class="form-control" required />
-    </div>
-
-    <div class="form-group">
-        <label>Motivo de la Consulta</label>
-        <textarea asp-for="Motivo" class="form-control" placeholder="Describa el motivo de la consulta" required></textarea>
+    <div class="mb-3">
+        <div class="form-label">Motivo de la Consulta</div>
+        @Html.TextAreaFor(_ => _.Motivo, new { @class = "form-control", @placeholder = "Describa el motivo de la consulta", @required = "required" })
     </div>
 
     <div class="form-group">
@@ -49,5 +48,7 @@ else if (TempData["ErrorMessage"] != null)
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar Cita</button>
+    <a href="/Main/" class="btn btn-info">Cancelar</a>
 </form>
+
 

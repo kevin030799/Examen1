@@ -23,37 +23,42 @@
     }
 </label>
 
-<form asp-action="IngresarPaciente" method="post">
-    <div class="form-group">
-        <label>Cédula:</label>
-        <input asp-for="Cedula" class="form-control" placeholder="Cédula del paciente" />
+<h2>Ingresar Paciente</h2>
+
+<form action="/Main/GuardarPaciente" method="post">
+    @Html.TextBoxFor(_ => _.Id_Paciente, new { @class = "form-control", @type = "hidden" })
+
+    <div class="mb-3">
+        <div class="form-label">Cédula</div>
+        @Html.TextBoxFor(_ => _.Cedula, new { @class = "form-control", @placeholder = "Cédula del paciente" })
     </div>
 
-    <div class="form-group">
-        <label>Nombre y Apellido:</label>
-        <input asp-for="Nombre" class="form-control" placeholder="Nombre completo del paciente" />
+    <div class="mb-3">
+        <div class="form-label">Nombre y Apellido</div>
+        @Html.TextBoxFor(_ => _.Nombre, new { @class = "form-control", @placeholder = "Nombre completo del paciente" })
     </div>
 
-    <div class="form-group">
-        <label>Teléfono:</label>
-        <input asp-for="Telefono" class="form-control" placeholder="Teléfono del paciente" />
+    <div class="mb-3">
+        <div class="form-label">Teléfono</div>
+        @Html.TextBoxFor(_ => _.Telefono, new { @class = "form-control", @placeholder = "Teléfono del paciente" })
     </div>
 
-    <div class="form-group">
-        <label>Correo Electrónico:</label>
-        <input asp-for="Correo" type="email" class="form-control" placeholder="Correo electrónico del paciente" />
+    <div class="mb-3">
+        <div class="form-label">Correo Electrónico</div>
+        @Html.TextBoxFor(_ => _.Correo, new { @class = "form-control", @type = "email", @placeholder = "Correo electrónico del paciente" })
     </div>
 
-    <div class="form-group">
-        <label>Dirección:</label>
-        <input asp-for="Direccion" class="form-control" placeholder="Dirección del paciente" />
+    <div class="mb-3">
+        <div class="form-label">Dirección</div>
+        @Html.TextBoxFor(_ => _.Direccion, new { @class = "form-control", @placeholder = "Dirección del paciente" })
     </div>
 
-    <div class="form-group">
-        <label>Fecha de Nacimiento:</label>
-        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+    <div class="mb-3">
+        <div class="form-label">Fecha de Nacimiento</div>
+        @Html.TextBoxFor(_ => _.FechaNacimiento, new { @class = "form-control", @type = "date" })
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar Paciente</button>
+    <a href="/Main/" class="btn btn-info">Cancelar</a>
 </form>
 
